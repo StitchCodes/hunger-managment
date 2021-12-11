@@ -32,18 +32,26 @@ function spoonCall() {
     .then(data => console.log(data));
 };
 
-// FUNCTION THAT CALLS SPOONACULAR API
-// function cocktailCall() {
+// FUNCTION THAT CALLS COCKTAILDB API
+function cocktailCall(ingredient) {
 //     // KEY
 //     let cocktailKey;
 
-//     // SPOONACULAR API
-//     fetch("https://api.spoonacular.com/recipes/716429/information?apiKey=" + spoonKey, {
-//         "method": "GET",
-//         "headers": {
-//         "Accept": 'application/json'
-//         }
-//     })
-//     .then(response => response.json())
-//     .then(data => console.log(data));
-// };
+//     // COCKATAIL API
+     console.log(ingredient);
+        fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient, {
+        "method": "GET",
+        "headers": {
+            'Accept': 'application/json'
+        }
+        })
+    .then(response => response.json())
+    .then(data => {
+        for (var i= 0; i < data.drinks.length; i++) {
+            console.log(data.drinks[i].strDrink)}
+        });
+};
+
+// COCKTAILDB CALL
+cockatilsCall(ingredient);
+// END OF JS
