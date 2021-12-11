@@ -10,3 +10,21 @@ fetch("https://api.spoonacular.com/recipes/716429/information?apiKey=" +spoonKey
 })
 .then(response => response.json())
 .then(data => console.log(data));
+
+function lookupCocktailbyIngredient (ingredient) {
+    console.log(ingredient);
+    fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient, {
+        "method": "GET",
+        "headers": {
+            'Accept': 'application/json'
+        }
+        })
+    .then(response => response.json())
+    .then(data => {
+        for (var i= 0; i < data.drinks.length; i++) {
+            console.log(data.drinks[i].strDrink)}
+        });
+}
+
+
+lookupCocktailbyIngredient("rum");
