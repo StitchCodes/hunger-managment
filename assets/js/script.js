@@ -38,7 +38,7 @@ function cocktailCall(ingredient) {
 //     let cocktailKey;
 
 //     // COCKATAIL API
-     console.log(ingredient);
+    console.log(ingredient);
         fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient, {
         "method": "GET",
         "headers": {
@@ -53,5 +53,5 @@ function cocktailCall(ingredient) {
 };
 
 // COCKTAILDB CALL
-cockatilsCall(ingredient);
+cocktailCall("tequila");
 // END OF JS
