@@ -59,7 +59,7 @@ function searchByIngredient() {
     let inputIngredients = ["bannana", "flour", "sugar"];
 
     // FETCH API
-    fetch("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + inputIngredients +"&number=10&apiKey=" + spoonKey, {
+    fetch("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + inputIngredients + "&number=5&apiKey=" + spoonKey, {
         "method": "GET",
         "headers": {
         "Accept": 'application/json'
