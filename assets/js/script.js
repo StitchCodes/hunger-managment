@@ -10,13 +10,13 @@ var ingMeat = ["beef","pork","sausage","ckicken"];
 // FUNCTION TO CREATE ELEMENT CHECKBOX DYNAMICALLY
 function init(ingredientArray){
     console.log(ingredientArray);
-var ingredient ="";
-for (var i=0; i < ingredientArray.length ; i++){
-    
-    ingredient = ingredientArray[i];
-    console.log(ingredient);
-    $(".ingredient-wrapper").append(`<label> <input type="checkbox" name=${ingredient} id="ingriedent-${ingredient}" class="ingredients"><span>${ingredient}</span> </label>`);
-  };
+    var ingredient ="";
+    for (var i=0; i < ingredientArray.length ; i++){
+        
+        ingredient = ingredientArray[i];
+        console.log(ingredient);
+        $(".ingredient-wrapper").append(`<label> <input type="checkbox" name=${ingredient} id="ingriedent-${ingredient}" class="ingredients"><span>${ingredient}</span> </label>`);
+    };
 };
 
 
@@ -63,13 +63,15 @@ function searchByIngredient() {
         });
 };
 
-// COCKTAILDB CALL
-cocktailCall("tequila");
-searchByIngredient();
 
-// call init to render ingridients
+// EXECUTE THIS FUNCTION FIRST ALWAYS
+// INITIALIZE CHECBOX GENERATOR FOR INGREDIENTS
 init(ingVegetable);
 init(ingDairy);
 init(ingMeat);
+
+// COCKTAILDB CALL
+// cocktailCall("tequila");
+// searchByIngredient();
 
 // END OF JS
