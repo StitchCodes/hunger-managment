@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hunger Management</title>
+    <!-- Favicons -->
+    <!-- CSS Stylesheet links -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/vars.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <header>
@@ -13,20 +19,17 @@
     </header>
     <body>
         <div id="instructions-wrapper">
-            <h2>How to use</h2>
+            <h3>How to use</h3>
             <p>Select all of the ingredients you'd like to include in your recipe from the dropdown/checkbox options and hit and click on Search. A list of dishes that include all of your selected ingredients will be displayed along with a recipe and drink suggestions if one is found.</p>
         </div>
         <div id="search-wrapper">
             <h3>Select your ingredients:</h3>
-            <div class="ingredient-wrapper">
-                <input type="checkbox" name="onion" id="ingredient-onion" class="ingredients">
-                <label for="onion">Onion</label>
-            </div>
-            <div class="ingredient-wrapper">
-                <input type="checkbox" name="salt" id="ingredient-salt" class="ingredients">
-                <label for="salt">Salt</label>
-            </div>
-            <button id="search-button">Search</button>
+            <form action="#">
+                <div class="ingredient-wrapper">
+                 
+                </div>
+                <button type="submit" id="search-button">Search</button>
+            </form>
         </div>
     </body>
     <footer>
@@ -38,6 +41,8 @@
             <li>Miguel Santamaría</li>
         </ul>
     </footer>
-  <script src="assets/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
