@@ -55,11 +55,13 @@ function cocktailCall(ingredient) {
 
 // FUNCTION TO SEARCH BY INGREDIENT SPOONACULAR
 function searchByIngredient() { 
-    let spoonKey = "f4a4ed51a308475a8fb85619133c516e";
-    let inputIngredients = ["bannana", "flour", "sugar"];
+    // let spoonKey = "f4a4ed51a308475a8fb85619133c516e";
+    // let spoonKey2 = "bea84f34b4344712ac67b92a9a93d39c";
+
+    let inputIngredients = ["orange", "flour", "lemon", "butter"];
 
     // FETCH API
-    fetch("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + inputIngredients + "&number=5&apiKey=" + spoonKey, {
+    fetch("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + inputIngredients + "&number=5&apiKey=" + spoonKey2, {
         "method": "GET",
         "headers": {
         "Accept": 'application/json'
