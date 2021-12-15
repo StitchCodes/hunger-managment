@@ -45,7 +45,7 @@ function cocktailCall(ingredient) {
 function searchByIngredient() { 
     // let spoonKey = "f4a4ed51a308475a8fb85619133c516e";
     // let spoonKey2 = "bea84f34b4344712ac67b92a9a93d39c";
-
+    
     let inputIngredients = ["orange", "flour", "lemon", "butter"];
 
     // FETCH API
@@ -63,17 +63,15 @@ function searchByIngredient() {
         });
 };
 
+
 // EXECUTE THIS FUNCTION FIRST ALWAYS
 // INITIALIZE CHECBOX GENERATOR FOR INGREDIENTS
 init(ingVegetable);
 init(ingDairy);
 init(ingMeat);
 
-
 // COCKTAILDB CALL
 // cocktailCall("tequila");
 // searchByIngredient();
-
-
 
 // END OF JS
