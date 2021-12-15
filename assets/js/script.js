@@ -1,57 +1,31 @@
-// FUNCTION THAT CALL TASTY API
-function tastyCall(){
-    // KEY
-    let tastyKey = "05c4d9282bmsh4ed8686956d1ab9p1c0498jsnab41b0ad1ccb";
 
-    // TASTY API
-    fetch("https://tasty.p.rapidapi.com/recipes/auto-complete?prefix=chicken%20soup", {
-	    "method": "GET",
-        "headers": {
-            "x-rapidapi-host": "tasty.p.rapidapi.com",
-            "x-rapidapi-key": tastyKey,
-            'Accept': 'application/json'
-	        }
-})
-.then(response => response.json())
-.then(data => console.log(data));
-};
 
-// FUNCTION THAT CALLS SPOONACULAR API
-function spoonCall() {
-    // KEY
-    let spoonKey = "f4a4ed51a308475a8fb85619133c516e";
+// Ingredients Arrays for category
+var alcohol ="tequila";
+var ingVegetable = ["onion","carrot","garlic","Eggplant","red pepper"];
+var ingDairy = ["milk","cheese","butter"];
+var ingMeat = ["beef","pork","sausage","ckicken"];
 
-    // SPOONACULAR API
-    fetch("https://api.spoonacular.com/recipes/716429/information?apiKey=" + spoonKey, {
-        "method": "GET",
-        "headers": {
-        "Accept": 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => console.log(data));
-};
 
-// FUNCTION THAT CALLS COCKTAILDB API
-function cocktailCall(ingredient) {
-//     // KEY
-//     let cocktailKey;
 
-//     // COCKATAIL API
+function init(ingredientArray){
+    console.log(ingredientArray);
+var ingredient ="";
+for (var i=0; i < ingredientArray.length ; i++){
+    
+    ingredient = ingredientArray[i];
     console.log(ingredient);
-        fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient, {
-        "method": "GET",
-        "headers": {
-            'Accept': 'application/json'
-        }
-        })
-    .then(response => response.json())
-    .then(data => {
-        for (var i= 0; i < data.drinks.length; i++) {
-            console.log(data.drinks[i].strDrink)}
-        });
+    $(".ingredient-wrapper").append(`<label> <input type="checkbox" name=${ingredient} id="ingriedent-${ingredient}" class="ingredients"><span>${ingredient}</span> </label>`);
+  };
 };
 
-// COCKTAILDB CALL
-cocktailCall("tequila");
+
+
+
+// call init to render ingridients
+
+init(ingVegetable);
+init(ingDairy);
+init(ingMeat);
+
 // END OF JS
