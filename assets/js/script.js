@@ -41,11 +41,13 @@ function cocktailCall(ingredient) {
 
 // FUNCTION TO SEARCH BY INGREDIENT SPOONACULAR
 function searchByIngredient() {
-    
+    // API Key
+    let spoonacularKey = keys.spoon.daniel
+
     let inputIngredients = ["orange", "flour", "lemon", "butter"];
 
     // FETCH API
-    fetch("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + inputIngredients + "&number=5&apiKey=" + keys.spoon.daniel, {
+    fetch("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + inputIngredients + "&number=5&apiKey=" + spoonacularKey, {
         "method": "GET",
         "headers": {
         "Accept": 'application/json'
