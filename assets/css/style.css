@@ -11,3 +11,12 @@ body {
     line-height: 1;
     background-color: lightslategray;
 };
+
+[type="checkbox"]+span:not(.lever) {
+    margin: 10px;
+    padding-left: 20px;
+};
+
+.ingredient-wrapper span {
+    margin: 30px;
+}
