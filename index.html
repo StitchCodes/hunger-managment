@@ -1,48 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hunger Management</title>
     <!-- Favicons -->
     <!-- CSS Stylesheet links -->
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/vars.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<body>
+    <!-- RESET CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <!-- MATERILIZE CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- TEAM VARIABLES CSS -->
+    <link rel="stylesheet" href="./assets/css/vars.css" />
+    <!-- TEAM STYLE CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
     <header>
-        <h1>Hunger Management</h1>
-        <img src="./assets/images/ingredients.jfif" alt="Photo of food ingredients">
+      <!-- MATERILIZE NAVBAR -->
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo center">HUNGER MANAGMENT</a>
+          <ul class="left hide-on-med-and-down">
+            <li><a href="sass.html">LINK1</a></li>
+            <li><a href="badges.html">link2</a></li>
+            <li class="active"><a href="collapsible.html">link3</a></li>
+          </ul>
+        </div>
+      </nav>
     </header>
-    <body>
-        <div id="instructions-wrapper">
-            <h3>How to use</h3>
-            <p>Select all of the ingredients you'd like to include in your recipe from the dropdown/checkbox options and hit and click on Search. A list of dishes that include all of your selected ingredients will be displayed along with a recipe and drink suggestions if one is found.</p>
+    <!-- IMAGE CONTAINER -->
+    <div class="container">
+      <img
+        src="./assets/images/ingredients.jfif"
+        alt="Photo of food ingredients"
+      />
+    </div>
+
+    <!-- HOW TO USE CONTAINER -->
+    <div class="container" id="instructions-wrapper">
+      <h4>How to use</h4>
+      <p>
+        Select all of the ingredients you'd like to include in your recipe from
+        the dropdown/checkbox options and hit and click on Search.
+      </p>
+      <br />
+      <p>
+        A list of dishes that include all of your selected ingredients will be
+        displayed along with a recipe and drink suggestions if one is found.
+      </p>
+    </div>
+
+    <!-- INGREDIENTS CONTAINER -->
+    <div class="container" id="search-wrapper">
+      <h3>Select your ingredients:</h3>
+      <form action="#">
+        <div class="ingredient-wrapper"></div>
+      </form>
+      <button type="submit" id="search-button">Search</button>
+    </div>
+
+    <!-- FOOTER CONTAINER -->
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Hunger Managment Dev Team</h5>
+            <p class="grey-text text-lighten-4">
+              This app was a team effort by full-stack devs:
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Dev GitHub</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Mario Patino</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Daniel Moreno</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Chris Alamaraz</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Miguel Santamaria</a></li>
+            </ul>
+          </div>
         </div>
-        <div id="search-wrapper">
-            <h3>Select your ingredients:</h3>
-            <form action="#">
-                <div class="ingredient-wrapper">
-                
-                </div>
-                <button type="submit" id="search-button">Search</button>
-            </form>
+      </div>
+      
+      <!-- MATERILIZE COPYRIGHT -->
+      <div class="footer-copyright">
+        <div class="container">
+          © 2014 Copyright Text
+          <a class="grey-text text-lighten-4 right" href="#!">Issues or feature request</a>
         </div>
-    </body>
-    <footer>
-        <h3>About Us</h3>
-        <p>This project is a team effort, built by:</p>
-        <ul>
-            <li>Daniel Moreno</li>
-            <li>Mario Patiño</li>
-            <li>Miguel Santamaría</li>
-        </ul>
+      </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
-    <script src="assets/js/script.js"></script>
+
+    <!-- SCRIPT CALLS -->
+    <!-- JQUERY CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- MATERIALIZE CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</body>
+    <!-- TEAM JS -->
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>

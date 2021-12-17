@@ -1,0 +1,13 @@
+img {
+    margin: 15px;
+    padding: 5px;
+    object-fit: cover;
+    height: 400px;
+    width: 800px;
+    
+};
+
+body {
+    line-height: 1;
+    background-color: lightslategray;
+};
