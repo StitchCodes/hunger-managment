@@ -22,8 +22,6 @@ function init(ingredientArray){
 
 // FUNCTION THAT CALLS COCKTAILDB API
 function cocktailCall(ingredient) {
-//     // KEY
-//     let cocktailKey;
 
 //     // COCKATAIL API
     console.log(ingredient);
@@ -42,14 +40,12 @@ function cocktailCall(ingredient) {
 };
 
 // FUNCTION TO SEARCH BY INGREDIENT SPOONACULAR
-function searchByIngredient() { 
-    // let spoonKey = "f4a4ed51a308475a8fb85619133c516e";
-    // let spoonKey2 = "bea84f34b4344712ac67b92a9a93d39c";
+function searchByIngredient() {
     
     let inputIngredients = ["orange", "flour", "lemon", "butter"];
 
     // FETCH API
-    fetch("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + inputIngredients + "&number=5&apiKey=" + spoonKey2, {
+    fetch("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + inputIngredients + "&number=5&apiKey=" + keys.spoon.daniel, {
         "method": "GET",
         "headers": {
         "Accept": 'application/json'
