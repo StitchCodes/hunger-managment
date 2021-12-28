@@ -1,3 +1,5 @@
+// Variable declarations
+
 // HTML Element setup
 var searchWrapper = document.querySelector("#search-wrapper");
 
@@ -43,17 +45,18 @@ function cocktailCall(ingredient) {
         });
 }
 
-// FUNCTION TO SEARCH BY INGREDIENT SPOONACULAR
-function searchByIngredient() {
-    
-    let inputIngredients = ["orange", "flour", "lemon", "butter"];
+
+function searchByIngredient(inputIngredients) {
+    // API Key
+    let spoonacularKey = keys.spoon.daniel;
+    let dishOutput;
 
     // FETCH API
-    fetch(
+    return fetch(
         "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" +
         inputIngredients +
         "&number=5&apiKey=" +
-        keys.spoon.daniel ,
+        spoonacularKey ,
         {
             method: "GET",
             headers: {
@@ -62,12 +65,6 @@ function searchByIngredient() {
         }
     )
         .then((response) => response.json())
-        .then((data) => {
-            // CALLS ALL DISH NAMES
-            for (var i = 0; i < data.length; i++) {
-                console.log(data[i].title);
-            }
-        });
 }
 
 // EXECUTE THIS FUNCTION FIRST ALWAYS
@@ -92,10 +89,16 @@ searchWrapper.addEventListener("click", function(event) {
       searchIngredientArray.push(ingredientList[i].getAttribute("data-name"));
     
     }
-    console.log(searchIngredientArray); 
+    console.log(searchIngredientArray);
+    
+    searchByIngredient(searchIngredientArray).then(function (results){
+        console.log(results);
+    });
   }
 
 });
+
+
 // COCKTAILDB CALL
 // cocktailCall("tequila");
 // searchByIngredient();
