@@ -7,10 +7,14 @@ img {
     
 };
 
-body {
+html {
     line-height: 1;
-    background-color: var(--main-bg-color)
+    background-color: var(--main-bg-color);
 };
+
+.fontStyle {
+    font-family: var(--main-font);
+}
 
 .ingredient-wrapper span {
     margin: 30px;
@@ -26,4 +30,8 @@ body {
 
 .ing-style{
     padding-left: 20px;
+}
+
+#search-button {
+    background-color:var(--main-bg-color) ;
 }
