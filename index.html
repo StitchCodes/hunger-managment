@@ -9,6 +9,10 @@
     <!-- CSS Stylesheet links -->
     <!-- RESET CSS -->
     <link rel="stylesheet" href="./assets/css/reset.css" />
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shizuru&display=swap" rel="stylesheet">
     <!-- MATERILIZE CSS CDN -->
     <link
       rel="stylesheet"
@@ -24,18 +28,13 @@
     <header>
       <!-- MATERILIZE NAVBAR -->
       <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo center">HUNGER MANAGMENT</a>
-          <ul class="left hide-on-med-and-down">
-            <li><a href="sass.html">LINK1</a></li>
-            <li><a href="badges.html">link2</a></li>
-            <li class="active"><a href="collapsible.html">link3</a></li>
-          </ul>
+        <div class="nav-wrapper header-color">
+          <p class="brand-logo center text-color">HUNGER MANAGMENT</p>
         </div>
       </nav>
     </header>
     <!-- IMAGE CONTAINER -->
-    <div class="container">
+    <div class="container center">
       <img
         src="./assets/images/ingredients.jfif"
         alt="Photo of food ingredients"
@@ -44,13 +43,13 @@
 
     <!-- HOW TO USE CONTAINER -->
     <div class="container" id="instructions-wrapper">
-      <h4>How to use</h4>
-      <p>
+      <h4 class="center">How to use</h4>
+      <p class="center">
         Select all of the ingredients you'd like to include in your recipe from
         the dropdown/checkbox options and hit and click on Search.
       </p>
       <br />
-      <p>
+      <p class="center">
         A list of dishes that include all of your selected ingredients will be
         displayed along with a recipe and drink suggestions if one is found.
       </p>
@@ -58,30 +57,30 @@
 
     <!-- INGREDIENTS CONTAINER -->
     <div class="container" id="search-wrapper">
-      <h3>Select your ingredients:</h3>
-      <form action="#search-wrapper">
+      <h3 class="center">Select your ingredients:</h3>
+      <form action="#" class="container">
         <div class="ingredient-wrapper"></div>
+        <button id="search-button" class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
       </form>
-      <button type="submit" id="search-button">Search</button>
     </div>
 
     <!-- FOOTER CONTAINER -->
-    <footer class="page-footer">
+    <footer class="page-footer header-color">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5 class="white-text">Hunger Managment Dev Team</h5>
-            <p class="grey-text text-lighten-4">
+            <h5 class="text-color">Hunger Managment Dev Team</h5>
+            <p class="text-color text-lighten-4">
               This app was a team effort by full-stack devs:
             </p>
           </div>
           <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Devs GitHub</h5>
+            <h5 class="text-color">Devs GitHub</h5>
             <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Mario Patino</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Daniel Moreno</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Chris Alamaraz</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Miguel Santamaria</a></li>
+              <li><a class="text-color text-lighten-3" href="https://github.com/mariopatino">Mario Patino</a></li>
+              <li><a class="text-color text-lighten-3" href="https://github.com/DAM-96">Daniel Moreno</a></li>
+              <li><a class="text-color text-lighten-3" href="#!">Chris Alamaraz</a></li>
+              <li><a class="text-color text-lighten-3" href="https://github.com/StitchCodes">Miguel Santamaria</a></li>
             </ul>
           </div>
         </div>
@@ -89,9 +88,9 @@
 
       <!-- MATERILIZE COPYRIGHT -->
       <div class="footer-copyright">
-        <div class="container">
+        <div class="container text-color">
           © 2014 Copyright Text
-          <a class="grey-text text-lighten-4 right" href="#!">Issues or feature request</a>
+          <a class="text-color text-lighten-4 right" href="https://github.com/StitchCodes/hunger-managment/issues">Issues or feature request</a>
         </div>
       </div>
     </footer>

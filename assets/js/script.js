@@ -1,3 +1,5 @@
+// Variable declarations
+
 // HTML Element setup
 var searchWrapper = document.querySelector("#search-wrapper");
 
@@ -5,19 +7,16 @@ var searchWrapper = document.querySelector("#search-wrapper");
 var alcohol = "tequila";
 var ingVegetable = ["onion", "carrot", "garlic", "Eggplant", "red pepper"];
 var ingDairy = ["milk", "cheese", "butter"];
-var ingMeat = ["beef", "pork", "sausage", "ckicken"];
+var ingMeat = ["beef", "pork", "sausage", "chicken"];
 
 
-// Render ingridients
+// Render ingredients
 function init(ingredientArray){
-    console.log(ingredientArray);
-var ingredient;
-for (var i=0; i < ingredientArray.length ; i++){
-    
-    ingredient = ingredientArray[i].trim();
-    console.log(ingredient);
-    $(".ingredient-wrapper").append(`<label> <input type="checkbox" data-name="${ingredient}" id="${ingredient}" class="ingredients"> <span> ${ingredient} </span></label>`);
-  };
+    var ingredient;
+    for (var i=0; i < ingredientArray.length ; i++){     
+        ingredient = ingredientArray[i].trim();
+        $(".ingredient-wrapper").append(`<label> <input type="checkbox" data-name="${ingredient}" id="${ingredient}" class="ingredients"> <span> ${ingredient} </span></label>`);
+    };
 };
 
 // FUNCTION THAT CALLS COCKTAILDB API
@@ -43,17 +42,18 @@ function cocktailCall(ingredient) {
         });
 }
 
-// FUNCTION TO SEARCH BY INGREDIENT SPOONACULAR
-function searchByIngredient() {
-    
-    let inputIngredients = ["orange", "flour", "lemon", "butter"];
+
+function searchByIngredient(inputIngredients) {
+    // API Key
+    let spoonacularKey = keys.spoon.mario;
 
     // FETCH API
-    fetch(
-        "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" +
+    return fetch(
+        "https://api.spoonacular.com/recipes/complexSearch?includeIngredients=" +
         inputIngredients +
-        "&number=5&apiKey=" +
-        keys.spoon.daniel ,
+        "&fillIngredients=true&number=5&apiKey=" +
+        spoonacularKey  + 
+        "&sort=min-missing-ingredients",
         {
             method: "GET",
             headers: {
@@ -62,12 +62,6 @@ function searchByIngredient() {
         }
     )
         .then((response) => response.json())
-        .then((data) => {
-            // CALLS ALL DISH NAMES
-            for (var i = 0; i < data.length; i++) {
-                console.log(data[i].title);
-            }
-        });
 }
 
 // EXECUTE THIS FUNCTION FIRST ALWAYS
@@ -80,22 +74,33 @@ searchWrapper.addEventListener("click", function(event) {
   
   var element = event.target;
   var searchIngredientArray=[];
+  var searchIngredientString="";
 
   if (element.matches("#search-button")) {
     event.preventDefault(event);
     
     var ingredientList = document.querySelectorAll("input[type=checkbox]:checked");
-    console.log(ingredientList);
     for (var i=0 ; i < ingredientList.length ; i++){
-
-      console.log(ingredientList[i].getAttribute("data-name"));
       searchIngredientArray.push(ingredientList[i].getAttribute("data-name"));
-    
-    }
-    console.log(searchIngredientArray); 
+      if (i==0){
+        searchIngredientString=ingredientList[i].getAttribute("data-name");
+      }else{
+        searchIngredientString=searchIngredientString+","+ingredientList[i].getAttribute("data-name");
+      }
+      
+    }    
+    console.log(searchIngredientString);
+        searchByIngredient(searchIngredientString).then(function (results){
+        console.log(results);
+    });
+    // searchByIngredient(searchIngredientArray).then(function (results){
+    //    console.log(results);
+    //});
   }
 
 });
+
+
 // COCKTAILDB CALL
 // cocktailCall("tequila");
 // searchByIngredient();
