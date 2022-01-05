@@ -2,15 +2,15 @@
 var alcohol = "tequila";
 var ingVegetable = ["onion", "carrot", "garlic", "Eggplant", "red pepper"];
 var ingDairy = ["milk", "cheese", "butter"];
-var ingMeat = ["beef", "pork", "sausage", "ckicken"];
+var ingMeat = ["beef", "pork", "sausage", "chicken"];
 
 // FUNCTION TO CREATE ELEMENT CHECKBOX DYNAMICALLY
 function init(ingredientArray) {
-    console.log(ingredientArray);
+    // console.log(ingredientArray);
     var ingredient = "";
     for (var i = 0; i < ingredientArray.length; i++) {
         ingredient = ingredientArray[i];
-        console.log(ingredient);
+        // console.log(ingredient);
         $(".ingredient-wrapper").append(
             `<label> <input type="checkbox" name=${ingredient} id="ingriedent-${ingredient}" class="ingredients"><span>${ingredient}</span> </label>`
         );
@@ -21,7 +21,7 @@ function init(ingredientArray) {
 function cocktailCall(ingredient) {
 
     //     // COCKATAIL API
-    console.log(ingredient);
+    // console.log(ingredient);
     fetch(
         "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient,
         {
@@ -35,7 +35,7 @@ function cocktailCall(ingredient) {
         .then((data) => {
             // CALLS ALL DRINK NAMES
             for (var i = 0; i < data.drinks.length; i++) {
-                console.log(data.drinks[i].strDrink);
+                // console.log(data.drinks[i].strDrink);
             }
         });
 }
@@ -62,10 +62,11 @@ function searchByIngredient() {
         .then((data) => {
             // CALLS ALL DISH NAMES
             for (var i = 0; i < data.length; i++) {
-                console.log(data[i].title);
+                // console.log(data[i].title);
             }
         });
 }
+
 
 
 // EXECUTE THIS FUNCTION FIRST ALWAYS
@@ -73,6 +74,15 @@ function searchByIngredient() {
 init(ingVegetable);
 init(ingDairy);
 init(ingMeat);
+
+
+// CLEAR SECTION TO DISPLAY RESULTS
+$("#search-button").click(function (e) { 
+    e.preventDefault();
+    cocktailCall("tequila");
+    $("#instructions-wrapper").empty(); 
+    $("#card-holder").removeClass("hidden");; 
+});
 
 // COCKTAILDB CALL
 // cocktailCall("tequila");
