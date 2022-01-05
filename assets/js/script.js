@@ -7,7 +7,7 @@ var searchWrapper = document.querySelector("#search-wrapper");
 var alcohol = "tequila";
 var ingVegetable = ["onion", "carrot", "garlic", "Eggplant", "red pepper"];
 var ingDairy = ["milk", "cheese", "butter"];
-var ingMeat = ["beef", "pork", "sausage", "ckicken"];
+var ingMeat = ["beef", "pork", "sausage", "chicken"];
 
 
 // Render ingridients
@@ -22,11 +22,12 @@ for (var i=0; i < ingredientArray.length ; i++){
   };
 };
 
+
 // FUNCTION THAT CALLS COCKTAILDB API
 function cocktailCall(ingredient) {
 
     //     // COCKATAIL API
-    console.log(ingredient);
+    // console.log(ingredient);
     fetch(
         "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient,
         {
@@ -40,7 +41,7 @@ function cocktailCall(ingredient) {
         .then((data) => {
             // CALLS ALL DRINK NAMES
             for (var i = 0; i < data.drinks.length; i++) {
-                console.log(data.drinks[i].strDrink);
+                // console.log(data.drinks[i].strDrink);
             }
         });
 }
@@ -65,6 +66,13 @@ function searchByIngredient(inputIngredients) {
         }
     )
         .then((response) => response.json())
+
+        .then((data) => {
+            // CALLS ALL DISH NAMES
+            for (var i = 0; i < data.length; i++) {
+                // console.log(data[i].title);
+            }
+        });
 }
 
 // EXECUTE THIS FUNCTION FIRST ALWAYS
@@ -72,6 +80,15 @@ function searchByIngredient(inputIngredients) {
 init(ingVegetable);
 init(ingDairy);
 init(ingMeat);
+
+// CLEAR SECTION TO DISPLAY RESULTS
+$("#search-button").click(function (e) { 
+    e.preventDefault();
+    cocktailCall("tequila");
+    $("#instructions-wrapper").empty(); 
+    $("#card-holder").removeClass("hidden");; 
+});
+
 
 searchWrapper.addEventListener("click", function(event) {
   
@@ -97,7 +114,6 @@ searchWrapper.addEventListener("click", function(event) {
   }
 
 });
-
 
 // COCKTAILDB CALL
 // cocktailCall("tequila");
