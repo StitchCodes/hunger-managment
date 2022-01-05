@@ -1,6 +1,6 @@
 // HTML Element setup
 var searchWrapper = document.querySelector("#search-wrapper");
-var ingredientsSearchBar = document.querySelector("#ingrediets-search-bar")
+var ingredientsSearchBar = document.getElementById("ingredients-search-bar")
 
 // Ingredients Arrays for category
 var alcohol = "tequila";
@@ -70,10 +70,13 @@ function searchByIngredient(inputIngredients) {
 }
 
 //Get 5 autocomplete options for the ingredients list
-function getAutocompleteOptions() {
-    fetch(
-        "https://api.spoonacular.com/food/ingredients/autocomplete?query="
-    )
+function getAutocompleteOptions(ingredientQuery) {
+    return fetch(
+        "https://api.spoonacular.com/food/ingredients/autocomplete?query=" + 
+        ingredientQuery + 
+        "&number=5&apiKey=" + 
+        keys.spoon.daniel
+    ).then(response => response.json());
 }
 
 // EXECUTE THIS FUNCTION FIRST ALWAYS
@@ -105,6 +108,34 @@ searchWrapper.addEventListener("click", function(event) {
   }
 
 });
+
+// Autocomplete:: NOT WORKING YET
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.autocomplete');
+
+    ingredientsSearchBar.addEventListener("keyup", function(event) {
+        var element = event.target;
+        if (element.matches("#ingredients-search-bar") 
+        && (event.code.startsWith('Key') || event.code == "Backspace" || event.code == "Space")) {
+            var queryValue = ingredientsSearchBar.value;
+    
+            if (queryValue != "" && queryValue != null){
+                console.log(queryValue);
+                getAutocompleteOptions(queryValue).then( (results) => {
+                    console.log(results)
+                    var data = {}
+                    for (i = 0; i < results.length; i++) {
+                        data[results[i].name] = results[i].image;
+                    }
+
+                    console.log(data);
+                    var options = data;
+                    var instances = M.Autocomplete.init(elems, options);
+                });  
+            }
+        }
+    });
+  });
 
 
 // COCKTAILDB CALL
