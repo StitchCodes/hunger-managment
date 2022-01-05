@@ -19,11 +19,12 @@ function init(ingredientArray){
     };
 };
 
+
 // FUNCTION THAT CALLS COCKTAILDB API
 function cocktailCall(ingredient) {
 
     //     // COCKATAIL API
-    console.log(ingredient);
+    // console.log(ingredient);
     fetch(
         "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient,
         {
@@ -37,7 +38,7 @@ function cocktailCall(ingredient) {
         .then((data) => {
             // CALLS ALL DRINK NAMES
             for (var i = 0; i < data.drinks.length; i++) {
-                console.log(data.drinks[i].strDrink);
+                // console.log(data.drinks[i].strDrink);
             }
         });
 }
@@ -45,6 +46,7 @@ function cocktailCall(ingredient) {
 
 function searchByIngredient(inputIngredients) {
     // API Key
+
     let spoonacularKey = keys.spoon.mario;
 
     // FETCH API
@@ -54,6 +56,7 @@ function searchByIngredient(inputIngredients) {
         "&fillIngredients=true&number=5&apiKey=" +
         spoonacularKey  + 
         "&sort=min-missing-ingredients",
+
         {
             method: "GET",
             headers: {
@@ -62,6 +65,14 @@ function searchByIngredient(inputIngredients) {
         }
     )
         .then((response) => response.json())
+
+        .then((data) => {
+            // CALLS ALL DISH NAMES
+            for (var i = 0; i < data.length; i++) {
+                // console.log(data[i].title);
+            }
+        });
+
 }
 
 // EXECUTE THIS FUNCTION FIRST ALWAYS
@@ -69,6 +80,15 @@ function searchByIngredient(inputIngredients) {
 init(ingVegetable);
 init(ingDairy);
 init(ingMeat);
+
+// CLEAR SECTION TO DISPLAY RESULTS
+$("#search-button").click(function (e) { 
+    e.preventDefault();
+    cocktailCall("tequila");
+    $("#instructions-wrapper").empty(); 
+    $("#card-holder").removeClass("hidden");; 
+});
+
 
 searchWrapper.addEventListener("click", function(event) {
   
@@ -82,6 +102,7 @@ searchWrapper.addEventListener("click", function(event) {
     var ingredientList = document.querySelectorAll("input[type=checkbox]:checked");
     for (var i=0 ; i < ingredientList.length ; i++){
       searchIngredientArray.push(ingredientList[i].getAttribute("data-name"));
+
       if (i==0){
         searchIngredientString=ingredientList[i].getAttribute("data-name");
       }else{
@@ -96,10 +117,10 @@ searchWrapper.addEventListener("click", function(event) {
     // searchByIngredient(searchIngredientArray).then(function (results){
     //    console.log(results);
     //});
+
   }
 
 });
-
 
 // COCKTAILDB CALL
 // cocktailCall("tequila");

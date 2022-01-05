@@ -34,4 +34,10 @@ html {
 
 #search-button {
     background-color:var(--main-bg-color) ;
+
+}
+
+.hidden {
+    display: none;
+
 }
