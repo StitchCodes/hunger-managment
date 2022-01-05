@@ -10,16 +10,13 @@ var ingDairy = ["milk", "cheese", "butter"];
 var ingMeat = ["beef", "pork", "sausage", "chicken"];
 
 
-// Render ingridients
+// Render ingredients
 function init(ingredientArray){
-    console.log(ingredientArray);
-var ingredient;
-for (var i=0; i < ingredientArray.length ; i++){
-    
-    ingredient = ingredientArray[i].trim();
-    console.log(ingredient);
-    $(".ingredient-wrapper").append(`<label> <input type="checkbox" data-name="${ingredient}" id="${ingredient}" class="ingredients"> <span> ${ingredient} </span></label>`);
-  };
+    var ingredient;
+    for (var i=0; i < ingredientArray.length ; i++){     
+        ingredient = ingredientArray[i].trim();
+        $(".ingredient-wrapper").append(`<label> <input type="checkbox" data-name="${ingredient}" id="${ingredient}" class="ingredients"> <span> ${ingredient} </span></label>`);
+    };
 };
 
 
@@ -49,15 +46,17 @@ function cocktailCall(ingredient) {
 
 function searchByIngredient(inputIngredients) {
     // API Key
-    let spoonacularKey = keys.spoon.daniel;
-    let dishOutput;
+
+    let spoonacularKey = keys.spoon.mario;
 
     // FETCH API
     return fetch(
-        "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" +
+        "https://api.spoonacular.com/recipes/complexSearch?includeIngredients=" +
         inputIngredients +
-        "&number=5&apiKey=" +
-        spoonacularKey ,
+        "&fillIngredients=true&number=5&apiKey=" +
+        spoonacularKey  + 
+        "&sort=min-missing-ingredients",
+
         {
             method: "GET",
             headers: {
@@ -73,6 +72,7 @@ function searchByIngredient(inputIngredients) {
                 // console.log(data[i].title);
             }
         });
+
 }
 
 // EXECUTE THIS FUNCTION FIRST ALWAYS
@@ -94,23 +94,30 @@ searchWrapper.addEventListener("click", function(event) {
   
   var element = event.target;
   var searchIngredientArray=[];
+  var searchIngredientString="";
 
   if (element.matches("#search-button")) {
     event.preventDefault(event);
     
     var ingredientList = document.querySelectorAll("input[type=checkbox]:checked");
-    console.log(ingredientList);
     for (var i=0 ; i < ingredientList.length ; i++){
-
-      console.log(ingredientList[i].getAttribute("data-name"));
       searchIngredientArray.push(ingredientList[i].getAttribute("data-name"));
-    
-    }
-    console.log(searchIngredientArray);
-    
-    searchByIngredient(searchIngredientArray).then(function (results){
+
+      if (i==0){
+        searchIngredientString=ingredientList[i].getAttribute("data-name");
+      }else{
+        searchIngredientString=searchIngredientString+","+ingredientList[i].getAttribute("data-name");
+      }
+      
+    }    
+    console.log(searchIngredientString);
+        searchByIngredient(searchIngredientString).then(function (results){
         console.log(results);
     });
+    // searchByIngredient(searchIngredientArray).then(function (results){
+    //    console.log(results);
+    //});
+
   }
 
 });
