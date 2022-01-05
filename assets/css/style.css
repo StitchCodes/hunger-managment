@@ -9,14 +9,21 @@ img {
 
 body {
     line-height: 1;
-    background-color: lightslategray;
-};
-
-[type="checkbox"]+span:not(.lever) {
-    margin: 10px;
-    padding-left: 20px;
+    background-color: var(--main-bg-color)
 };
 
 .ingredient-wrapper span {
     margin: 30px;
+}
+
+.header-color{
+    background-color: var(--main-header-color) ;
+}
+
+.text-color{
+    color: var(--text-color);
+}
+
+.ing-style{
+    padding-left: 20px;
 }
