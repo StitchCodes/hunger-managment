@@ -82,6 +82,7 @@ function searchByIngredient(inputIngredients) {
         .then((data) => {
             // CALLS ALL DISH NAMES
             for (var i = 0; i < data.length; i++) {
+                console.log("data", data);
                 // CARD ONE
                 $("#dish-name-one").text(data[0].title);
                 $("#image-one").attr("src", data[0].image);
