@@ -151,9 +151,9 @@ searchWrapper.addEventListener("click", function(event) {
         searchByIngredient(searchIngredientString).then(function (results){
         console.log("results", results);
     });
-    // searchByIngredient(searchIngredientArray).then(function (results){
-    //    console.log(results);
-    //});
+    searchByIngredient(searchIngredientArray).then(function (results){
+       console.log(results);
+    });
 
   }
 
