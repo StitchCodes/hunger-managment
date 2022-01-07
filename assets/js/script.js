@@ -1,5 +1,3 @@
-// Variable declarations
-
 // HTML Element setup
 var searchWrapper = document.querySelector("#search-wrapper");
 
@@ -9,20 +7,16 @@ var ingVegetable = [ "Brocoli", "Cabbage" ,"Carrot", "Celery", "Corn", "Eggplant
 var ingDairy = ["Cheedar","Cheese", "Cream" ,"Butter", "Milk"];
 var ingMeat = ["Beef", "Chicken", "Pork","Ribs", "Sausage" ];
 
-
-
 // Render ingridients
 function init(ingredientArray){
     // console.log(ingredientArray);
 var ingredient;
 for (var i=0; i < ingredientArray.length ; i++){
-    
     ingredient = ingredientArray[i].trim();
     // console.log(ingredient);
     $(".ingredient-wrapper").append(`<label> <input type="checkbox" data-name="${ingredient}" id="${ingredient}" class="ingredients"> <span> ${ingredient} </span></label>`);
   };
 };
-
 
 // FUNCTION THAT CALLS COCKTAILDB API
 function cocktailCall(ingredient) {
@@ -52,7 +46,6 @@ function cocktailCall(ingredient) {
         });
 }
 
-
 function searchByIngredient(inputIngredients) {
     // API Key
     let spoonacularKey = keys.spoon.daniel;
@@ -61,8 +54,9 @@ function searchByIngredient(inputIngredients) {
     return fetch(
         "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" +
         inputIngredients +
-        "&number=5&apiKey=" +
-        spoonacularKey ,
+        "&fillIngredients=true&number=5&apiKey=" +
+        spoonacularKey  + 
+        "&sort=min-missing-ingredients",
         {
             method: "GET",
             headers: {
@@ -114,9 +108,6 @@ $("#search-button").click(function (e) {
 
 });
 
-
-
-
 searchWrapper.addEventListener("click", function(event) {
   
   var element = event.target;
@@ -128,15 +119,13 @@ searchWrapper.addEventListener("click", function(event) {
     var ingredientList = document.querySelectorAll("input[type=checkbox]:checked");
     console.log(ingredientList);
     for (var i=0 ; i < ingredientList.length ; i++){
-
-    //   console.log(ingredientList[i].getAttribute("data-name"));
-      searchIngredientArray.push(ingredientList[i].getAttribute("data-name"));
-    
+    // console.log(ingredientList[i].getAttribute("data-name"));
+    searchIngredientArray.push(ingredientList[i].getAttribute("data-name"));
     }
+
     console.log(searchIngredientArray);
-    
     searchByIngredient(searchIngredientArray).then(function (results){
-        console.log(results);
+    console.log(results);
     });
   }
 
