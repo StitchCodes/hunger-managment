@@ -1,0 +1,41 @@
+img {
+    margin: 15px;
+    padding: 5px;
+    object-fit: cover;
+    height: 400px;
+    width: 800px;
+    
+};
+
+html {
+    line-height: 1;
+    background-color: var(--main-bg-color);
+};
+
+.fontStyle {
+    font-family: var(--main-font);
+}
+
+.ingredient-wrapper span {
+    margin: 30px;
+}
+
+.header-color{
+    background-color: var(--main-header-color) ;
+}
+
+.text-color{
+    color: var(--text-color);
+}
+
+.ing-style{
+    padding-left: 20px;
+}
+
+#search-button {
+    background-color:var(--main-bg-color) ;
+}
+
+.hidden {
+    display: none;
+}
