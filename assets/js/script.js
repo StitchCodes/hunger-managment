@@ -1,5 +1,3 @@
-// Variable declarations
-
 // HTML Element setup
 var searchWrapper = document.querySelector("#search-wrapper");
 
@@ -9,22 +7,16 @@ var ingVegetable = [ "Brocoli", "Cabbage" ,"Carrot", "Celery", "Corn", "Eggplant
 var ingDairy = ["Cheedar","Cheese", "Cream" ,"Butter", "Milk"];
 var ingMeat = ["Beef", "Chicken", "Pork","Ribs", "Sausage" ];
 
-
-
-// Render ingredients
+// Render ingridients
 function init(ingredientArray){
-
     // console.log(ingredientArray);
 var ingredient;
 for (var i=0; i < ingredientArray.length ; i++){
-    
     ingredient = ingredientArray[i].trim();
     // console.log(ingredient);
     $(".ingredient-wrapper").append(`<label> <input type="checkbox" data-name="${ingredient}" id="${ingredient}" class="ingredients"> <span> ${ingredient} </span></label>`);
   };
-
 };
-
 
 // FUNCTION THAT CALLS COCKTAILDB API
 function cocktailCall(ingredient) {
@@ -54,22 +46,17 @@ function cocktailCall(ingredient) {
         });
 }
 
-
 function searchByIngredient(inputIngredients) {
     // API Key
-
-
     let spoonacularKey = keys.spoon.daniel;
-
 
     // FETCH API
     return fetch(
-        "https://api.spoonacular.com/recipes/complexSearch?includeIngredients=" +
+        "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" +
         inputIngredients +
         "&fillIngredients=true&number=5&apiKey=" +
         spoonacularKey  + 
         "&sort=min-missing-ingredients",
-
         {
             method: "GET",
             headers: {
@@ -80,9 +67,8 @@ function searchByIngredient(inputIngredients) {
         .then((response) => response.json())
 
         .then((data) => {
-            // CALLS ALL DISH NAMES
+            // CALLS ALL DISH NAME
             for (var i = 0; i < data.length; i++) {
-                console.log("data", data);
                 // CARD ONE
                 $("#dish-name-one").text(data[0].title);
                 $("#image-one").attr("src", data[0].image);
@@ -105,7 +91,6 @@ function searchByIngredient(inputIngredients) {
                 $("#used-ing-five").text(data[4].usedIngredients[0].name + ", " + data[4].usedIngredients[1].name + ", "+ data[4].usedIngredients[2].name);
             }
         });
-
 }
 
 // EXECUTE THIS FUNCTION FIRST ALWAYS
@@ -123,38 +108,25 @@ $("#search-button").click(function (e) {
 
 });
 
-
-
-
 searchWrapper.addEventListener("click", function(event) {
   
   var element = event.target;
   var searchIngredientArray=[];
-  var searchIngredientString="";
 
   if (element.matches("#search-button")) {
     event.preventDefault(event);
     
     var ingredientList = document.querySelectorAll("input[type=checkbox]:checked");
+    console.log(ingredientList);
     for (var i=0 ; i < ingredientList.length ; i++){
+    // console.log(ingredientList[i].getAttribute("data-name"));
+    searchIngredientArray.push(ingredientList[i].getAttribute("data-name"));
+    }
 
-      searchIngredientArray.push(ingredientList[i].getAttribute("data-name"));
-
-      if (i==0){
-        searchIngredientString=ingredientList[i].getAttribute("data-name");
-      }else{
-        searchIngredientString=searchIngredientString+","+ingredientList[i].getAttribute("data-name");
-      }
-      
-    }    
-    console.log("Search Ingredients",searchIngredientString);
-        searchByIngredient(searchIngredientString).then(function (results){
-        console.log("results", results);
-    });
+    console.log(searchIngredientArray);
     searchByIngredient(searchIngredientArray).then(function (results){
-       console.log(results);
+    console.log(results);
     });
-
   }
 
 });
