@@ -73,7 +73,7 @@ function searchByIngredient(inputIngredients) {
         .then((response) => response.json())
 
         .then((data) => {
-            // CALLS ALL DISH NAMES
+            // CALLS ALL DISH NAME
             for (var i = 0; i < data.length; i++) {
                 // CARD ONE
                 $("#dish-name-one").text(data[0].title);
